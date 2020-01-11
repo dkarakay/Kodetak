@@ -1,8 +1,6 @@
-# Kodetak 
-Deniz Karakay
+# Kodetak
+Deniz Karakay Özgür Kara Ahmet Akman
 
-Özgür Kara
+# Fikir nasıl çıktı
 
-Ahmet Akman
-
-deneme
+# Nasıl geliştirdik
