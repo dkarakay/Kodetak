@@ -24,7 +24,7 @@
   Bireyin kullanıdığı cep telefonunu tüm işlemlerin yapıldığı yer haline getirerek ürün bağımlılığını azaltmak ürünün cazibesini ve zor koşullarda çalışma doğruluğunu artıracaktır.
 \
   Görüntü üzerinden tanımlamada görüntü derinliğini yakınsayan makine öğrenmesi algoritmalarının mobil cihazda çalıştırma fikri bireyin ortam hissiyatını artırmada yardımcı olabilir.
-\
+
 # Kaynaklar
 \
 [1]https://www.researchgate.net/publication/312593672_Let_Blind_People_See_Real-Time_Visual_Recognition_with_Results_Converted_to_3D_Audio
