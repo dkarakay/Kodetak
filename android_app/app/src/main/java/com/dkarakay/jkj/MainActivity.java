@@ -48,14 +48,10 @@ public class MainActivity extends AppCompatActivity {
         final int durationMs = 1000;
 
 
-        //final ToneGenerator generator = new ToneGenerator(AudioManager.STREAM_MUSIC, volume);
-
-
-
+        //Dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Dil seçin");
-
-        int checkedItem = 0; //this will checked the item when user open the dialog
+        int checkedItem = 0;
         builder.setSingleChoiceItems(listItems, checkedItem, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -83,17 +79,18 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
 
+        //Change Mode Button
         final Button langButton = (Button) findViewById(R.id.btn_lang);
         langButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(speakIsOn){
                     speakIsOn = false;
-                    langButton.setText("Beep mode");
+                    langButton.setText("Beep mode"); //Beep mode is on
                 }
                 else{
                     speakIsOn = true;
-                    langButton.setText("Object mode");
+                    langButton.setText("Object mode"); //Object mode is on
                 }
 
             }
@@ -101,12 +98,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         mp = MediaPlayer.create(getApplicationContext(), R.raw.cen);
-
-        result.setText("deniz");
-
         mp.setLooping(false);
-        //getWebsite();
-       // generator.startTone(ToneGenerator.TONE_CDMA_ABBR_ALERT, 1000);
+
+        //TextToSpeech
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -118,118 +112,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        /*langButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
-
-
-
-
+        //Start Button
         getBtn = (Button) findViewById(R.id.getBtn);
+        getBtn.setText("Start");
         getBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // while (true) {
                     new WebTest().execute();
-/*
-                    if (speakIsOn) {
-                       // result.setText("fdgdfgdfg");
-
-                        t1.speak(label, TextToSpeech.QUEUE_FLUSH, null);
-                        mp2.setVolume(1f, 0.2f);
-                        mp2.start();
-                    }else{
-                        mp.setVolume(0.1f, 1f);
-                        mp.start();
-                    }
-
-
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-*/
-                }
-           // }
         });
 
     }
 
-/*
-    private void getWebsite() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final StringBuilder builder = new StringBuilder();
 
-                try {
-                    Document doc = Jsoup.connect("http://192.168.43.147:5050/").get();
-
-                    builder.append(doc.body().text());
-                    line = builder.toString();
-                    if(line.startsWith("#")){
-                        line = "NOO";
-                    }
-                    //object left/right multiplier
-                    try {
-                        lines = line.split(" ");
-                        Log.i("OBJECT: ", lines[0]);
-                        Log.i("LOC: ", lines[1]);
-                        Log.i("MUL: ", lines[2]);
-                        editor = sharedPref.edit();
-                        editor.putFloat("intValue",Float.parseFloat(lines[2])); //int değer kayıt eklemek için kullanıyoruz.
-                        editor.putString("stringValue",lines[0]); //string değer kayıt etmek için kullanıyoruz.
-                        editor.commit(); //Kayıt.
-
-
-                    } catch (Exception e){
-
-                    }
-
-
-                } catch (IOException e) {
-                    builder.append("Error : ").append(e.getMessage()).append("\n");
-                }
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-
-                         //   String lXr = (Float.parseFloat(lines[1]) > 0) ? "Left" : "Right";
-                            result.setText("Object: " + lines[0] + "Location: " + lines[1]  + " Multiplier:" + lines[2]);
-                        } catch (Exception e2) {
-                            result.setText("?");
-                        }
-                    }
-                });
-
-
-            }
-        }).start();
-    }
-
-
-*/
-    private class WebTest extends AsyncTask<Void,Void,Void>
-    {
+    private class WebTest extends AsyncTask<Void,Void,Void>{
         @Override
-        protected  void onPreExecute()//Verilerin çekilme esnasında proggres dialog çalıştırır.
-        {
+        protected  void onPreExecute(){
 
         }
         @Override
-        protected Void doInBackground(Void... params) {//Arka plan işlemleri gerçekleştirilir.
+        protected Void doInBackground(Void... params) { //Accessing WebSite and fetch data
             try {
                 StringBuilder builder = new StringBuilder();
-                Document doc = Jsoup.connect("http://192.168.43.147:5050/").get();
+                Document doc = Jsoup.connect("http://192.168.43.147:5050/").get(); //Local URL
                 builder.append(doc.body().text());
                 line = builder.toString();
-                if(line.startsWith("#")){
+                if(line.startsWith("#")){ //If no object found
                     line = "?";
                 }else {
                     lines = line.split(" ");
@@ -243,8 +150,9 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
         @Override
-        protected void onPostExecute(Void avoid)//Arka plan işlemleri bittikten sonra başlık yazdırılır.
+        protected void onPostExecute(Void avoid)// After fetching data
         {
+            //Update Result TextView with the published HTML data
             result.setText("Object: " + lines[0] + "Location: " + lines[1]  + " Multiplier:" + lines[2]);
 
             label = lines[0];
@@ -252,36 +160,34 @@ public class MainActivity extends AppCompatActivity {
             multiplier = Float.parseFloat(lines[2]);
 
             //Left 1 Right 0
-
+            //If object mode is on
             if (speakIsOn) {
-                // result.setText("fdgdfgdfg");
-
+              //TTS integration
              //   t1.speak(label, TextToSpeech.QUEUE_FLUSH, null);
-
-
-                if(leftorright == 1 ||leftorright == -1){
+                if(leftorright == 1 ||leftorright == -1){ //Comes from center
                     mp2.setVolume(1f*leftorright, 1f*leftorright);
                     mp3.setVolume(1f*leftorright, 1f*leftorright);
                     mp4.setVolume(1f*leftorright, 1f*leftorright);
                     mp5.setVolume(1f*leftorright, 1f*leftorright);
-                }else if(leftorright >= 0){
+                }else if(leftorright >= 0){ //Comes from left
                     mp2.setVolume(1f*leftorright, 0f);
                     mp3.setVolume(1f*leftorright, 0f);
                     mp4.setVolume(1f*leftorright, 0f);
                     mp5.setVolume(1f*leftorright, 0f);
-                }else if(leftorright <= 0){
+                }else if(leftorright <= 0){ //Comes from right
                     mp2.setVolume(0, Math.abs(leftorright*1f));
                     mp3.setVolume(0, Math.abs(leftorright*1f));
                     mp4.setVolume(0, Math.abs(leftorright*1f));
                     mp5.setVolume(0, Math.abs(leftorright*1f));
                 }
-                switch (label){
+                switch (label){ //Prepared multilanguage voice support (4 examples)
                     case "person": mp2.start(); break;
                     case "chair": mp3.start(); break;
                     case "laptop": mp4.start(); break;
                     case "table": mp5.start(); break;
 
                 }
+                //If beep mode is on
             }else{
                 if(leftorright == 1 ||leftorright == -1){
                     mp.setVolume(1f*leftorright, 1f*leftorright);
@@ -293,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 mp.start();
             }
 
-            new WebTest().execute();
+            new WebTest().execute(); //Recall the WebTest and update the values
         }
     }
 }
