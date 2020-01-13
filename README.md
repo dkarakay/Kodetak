@@ -27,7 +27,7 @@ Deniz Karakay - Özgür Kara - Ahmet Akman
  
  # Daha da İleri!
 \
-  Bireyin kullanıdığı cep telefonunu tüm işlemlerin yapıldığı yer haline getirerek ürün bağımlılığını azaltmak ürünün cazibesini ve zor koşullarda çalışma doğruluğunu artıracaktır.
+  Bireyin kullandığı cep telefonunu tüm işlemlerin yapıldığı yer haline getirerek ürün bağımlılığını azaltmak ürünün cazibesini ve zor koşullarda çalışma doğruluğunu artıracaktır.
 \
   Görüntü üzerinden tanımlamada görüntü derinliğini yakınsayan makine öğrenmesi algoritmalarının mobil cihazda çalıştırma fikri bireyin ortam hissiyatını artırmada yardımcı olabilir.
 
@@ -42,6 +42,6 @@ Deniz Karakay - Özgür Kara - Ahmet Akman
 [4] https://pjreddie.com/darknet/yolo/ 
 \
 [5] https://www.tensorflow.org/ 
-\
+
 
  
