@@ -26,6 +26,9 @@
 <img src="https://github.com/dkarakay/Kodetak/blob/master/logos/android-studio-integrated-development-environment-software-build-intellij-idea-studio.jpg" alt="android"	title="android" width="250" height="250" />
 <img src="https://png2.cleanpng.com/sh/c711520b30039fbd3e3b3f1e8a896a5c/L0KzQYm4UcI2N5D6gpH0aYP2gLBuTf9xbZ9ojp9ybXHqdX73kv9kbaR4gdDwLXPyfcH8lPVzNaR0fuZCYYLoPbTzigAuaaN5RadrZnHmdIfog8IzbpMARqkDN0izSYO3UcU1O2I7S6Q9Mke8RYW1kP5o/kisspng-opencv-image-processing-computer-software-clip-art-5bfacd6ac22fb9.7878092015431632427954.png" alt="opencv"	title="opencv" width="250" height="250" />
 
+# Güvenlik
+\
+ Bu işlemleri gerçekleştirirken kendi oluşturduğumuz özel hotspota bağlanıyoruz. Ayrıca uygulama içerisinde ve veri aktarımında güvenlik artırıcı önlemler aldık. Bunun yanında projeyi Açık Kaynak yaparak uygulamayı tüm dünyadaki geliştiriclere sunduk.
  
  # Daha da İleri!
 \
