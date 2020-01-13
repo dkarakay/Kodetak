@@ -1,8 +1,10 @@
 # Kodetak (Pixery Hackathon 2020)
-Deniz Karakay - Özgür Kara - Ahmet Akman 
-\
-![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/metu_eee.png)
-![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/rk1Zezjt_400x400.jpg)
+<img src="https://github.com/dkarakay/Kodetak/blob/master/logo.png" alt="flask"	title="flask" width="250" height="250" />
+
+## Deniz Karakay - Özgür Kara - Ahmet Akman
+
+
+
 
 # Fikir Nasıl Çıktı
 
@@ -30,6 +32,11 @@ Deniz Karakay - Özgür Kara - Ahmet Akman
   Bireyin kullandığı cep telefonunu tüm işlemlerin yapıldığı yer haline getirerek ürün bağımlılığını azaltmak ürünün cazibesini ve zor koşullarda çalışma doğruluğunu artıracaktır.
 \
   Görüntü üzerinden tanımlamada görüntü derinliğini yakınsayan makine öğrenmesi algoritmalarının mobil cihazda çalıştırma fikri bireyin ortam hissiyatını artırmada yardımcı olabilir.
+
+
+\
+![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/metu_eee.png)
+![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/rk1Zezjt_400x400.jpg)
 
 # Kaynaklar
 \
