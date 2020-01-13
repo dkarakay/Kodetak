@@ -1,9 +1,8 @@
 # Kodetak
+Deniz Karakay - Özgür Kara - Ahmet Akman 
 
-
-  Deniz Karakay - Özgür Kara - Ahmet Akman \
-![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/metu_eee.png){: width=50% }
-![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/rk1Zezjt_400x400.jpg){: width=150 height=100 style="float:right; padding:16px"}
+![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/metu_eee.png)
+![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/rk1Zezjt_400x400.jpg)
 
 # Fikir Nasıl Çıktı
 
