@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
-                   // t1.setLanguage(Locale.FRENCH);
+                    // t1.setLanguage(Locale.FRENCH);
 
                 }
             }
@@ -118,88 +118,89 @@ public class MainActivity extends AppCompatActivity {
         getBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    new WebTest().execute();
-        });
-
-    }
-
-
-    private class WebTest extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected  void onPreExecute(){
-
-        }
-        @Override
-        protected Void doInBackground(Void... params) { //Accessing WebSite and fetch data
-            try {
-                StringBuilder builder = new StringBuilder();
-                Document doc = Jsoup.connect("http://192.168.43.147:5050/").get(); //Local URL
-                builder.append(doc.body().text());
-                line = builder.toString();
-                if(line.startsWith("#")){ //If no object found
-                    line = "?";
-                }else {
-                    lines = line.split(" ");
-                    Log.i("OBJECT: ", lines[0]);
-                    Log.i("LOC: ", lines[1]);
-                    Log.i("MUL: ", lines[2]);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+                new WebTest().execute();
             }
-            return null;
+            });
+
         }
-        @Override
-        protected void onPostExecute(Void avoid)// After fetching data
-        {
-            //Update Result TextView with the published HTML data
-            result.setText("Object: " + lines[0] + "Location: " + lines[1]  + " Multiplier:" + lines[2]);
 
-            label = lines[0];
-            leftorright = Float.parseFloat(lines[1]);
-            multiplier = Float.parseFloat(lines[2]);
 
-            //Left 1 Right 0
-            //If object mode is on
-            if (speakIsOn) {
-              //TTS integration
-             //   t1.speak(label, TextToSpeech.QUEUE_FLUSH, null);
-                if(leftorright == 1 ||leftorright == -1){ //Comes from center
-                    mp2.setVolume(1f*leftorright, 1f*leftorright);
-                    mp3.setVolume(1f*leftorright, 1f*leftorright);
-                    mp4.setVolume(1f*leftorright, 1f*leftorright);
-                    mp5.setVolume(1f*leftorright, 1f*leftorright);
-                }else if(leftorright >= 0){ //Comes from left
-                    mp2.setVolume(1f*leftorright, 0f);
-                    mp3.setVolume(1f*leftorright, 0f);
-                    mp4.setVolume(1f*leftorright, 0f);
-                    mp5.setVolume(1f*leftorright, 0f);
-                }else if(leftorright <= 0){ //Comes from right
-                    mp2.setVolume(0, Math.abs(leftorright*1f));
-                    mp3.setVolume(0, Math.abs(leftorright*1f));
-                    mp4.setVolume(0, Math.abs(leftorright*1f));
-                    mp5.setVolume(0, Math.abs(leftorright*1f));
-                }
-                switch (label){ //Prepared multilanguage voice support (4 examples)
-                    case "person": mp2.start(); break;
-                    case "chair": mp3.start(); break;
-                    case "laptop": mp4.start(); break;
-                    case "table": mp5.start(); break;
+        private class WebTest extends AsyncTask<Void,Void,Void>{
+            @Override
+            protected  void onPreExecute(){
 
-                }
-                //If beep mode is on
-            }else{
-                if(leftorright == 1 ||leftorright == -1){
-                    mp.setVolume(1f*leftorright, 1f*leftorright);
-                }else if(leftorright >= 0){
-                    mp.setVolume(1f*leftorright, 0f);
-                }else if(leftorright <= 0){
-                    mp.setVolume(0, Math.abs(leftorright*1f));
-                }
-                mp.start();
             }
+            @Override
+            protected Void doInBackground(Void... params) { //Accessing WebSite and fetch data
+                try {
+                    StringBuilder builder = new StringBuilder();
+                    Document doc = Jsoup.connect("http://192.168.43.147:5050/").get(); //Local URL
+                    builder.append(doc.body().text());
+                    line = builder.toString();
+                    if(line.startsWith("#")){ //If no object found
+                        line = "?";
+                    }else {
+                        lines = line.split(" ");
+                        Log.i("OBJECT: ", lines[0]);
+                        Log.i("LOC: ", lines[1]);
+                        Log.i("MUL: ", lines[2]);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Void avoid)// After fetching data
+            {
+                //Update Result TextView with the published HTML data
+                result.setText("Object: " + lines[0] + "Location: " + lines[1]  + " Multiplier:" + lines[2]);
 
-            new WebTest().execute(); //Recall the WebTest and update the values
+                label = lines[0];
+                leftorright = Float.parseFloat(lines[1]);
+                multiplier = Float.parseFloat(lines[2]);
+
+                //Left 1 Right 0
+                //If object mode is on
+                if (speakIsOn) {
+                    //TTS integration
+                    //   t1.speak(label, TextToSpeech.QUEUE_FLUSH, null);
+                    if(leftorright == 1 ||leftorright == -1){ //Comes from center
+                        mp2.setVolume(1f*leftorright, 1f*leftorright);
+                        mp3.setVolume(1f*leftorright, 1f*leftorright);
+                        mp4.setVolume(1f*leftorright, 1f*leftorright);
+                        mp5.setVolume(1f*leftorright, 1f*leftorright);
+                    }else if(leftorright >= 0){ //Comes from left
+                        mp2.setVolume(1f*leftorright, 0f);
+                        mp3.setVolume(1f*leftorright, 0f);
+                        mp4.setVolume(1f*leftorright, 0f);
+                        mp5.setVolume(1f*leftorright, 0f);
+                    }else if(leftorright <= 0){ //Comes from right
+                        mp2.setVolume(0, Math.abs(leftorright*1f));
+                        mp3.setVolume(0, Math.abs(leftorright*1f));
+                        mp4.setVolume(0, Math.abs(leftorright*1f));
+                        mp5.setVolume(0, Math.abs(leftorright*1f));
+                    }
+                    switch (label){ //Prepared multilanguage voice support (4 examples)
+                        case "person": mp2.start(); break;
+                        case "chair": mp3.start(); break;
+                        case "laptop": mp4.start(); break;
+                        case "table": mp5.start(); break;
+
+                    }
+                    //If beep mode is on
+                }else{
+                    if(leftorright == 1 ||leftorright == -1){
+                        mp.setVolume(1f*leftorright, 1f*leftorright);
+                    }else if(leftorright >= 0){
+                        mp.setVolume(1f*leftorright, 0f);
+                    }else if(leftorright <= 0){
+                        mp.setVolume(0, Math.abs(leftorright*1f));
+                    }
+                    mp.start();
+                }
+
+                new WebTest().execute(); //Recall the WebTest and update the values
+            }
         }
     }
-}
