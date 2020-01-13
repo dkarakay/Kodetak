@@ -1,6 +1,6 @@
 # Kodetak (Pixery Hackathon 2020)
 \
-Deniz Karakay - Özgür Kara - Ahmet Akman
+## Deniz Karakay - Özgür Kara - Ahmet Akman
 \
 <img src="https://github.com/dkarakay/Kodetak/blob/master/logo.png" alt="flask"	title="flask" width="250" height="250" />
 
