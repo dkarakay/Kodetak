@@ -2,8 +2,8 @@
 
 
   Deniz Karakay - Özgür Kara - Ahmet Akman \
-![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/metu_eee.png)
-![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/rk1Zezjt_400x400.jpg)
+![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/metu_eee.png = 300x300)
+![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/rk1Zezjt_400x400.jpg = 300x300)
 
 # Fikir Nasıl Çıktı
 
@@ -19,10 +19,10 @@
 
 \
   Projemizde yazılımlarımız biribirinden farklı altsistemler üzerinde ve dillerde yazılmıştır. Mobil uygulmamamız Java dilinde ve Flask Framework[2] kullanılarak oluşturulmuştur. Görüntü işleme işlemlerimiz yapıldığı bilgisayarımızda Python dilinde görüntü işlemek için OpenCV[3] bilgisayarlı görü kütüphanesi kullanılmıştır. Nesne tanımlama işlemlerimiz YOLOv3[4] algoritmasını (geri planda TensorFlow[5] çalışıyor) kullandık.
-![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/flasj.jpg)
-![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/python.jpg)
-![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/android-studio-integrated-development-environment-software-build-intellij-idea-studio.jpg)
-![Image](https://png2.cleanpng.com/sh/c711520b30039fbd3e3b3f1e8a896a5c/L0KzQYm4UcI2N5D6gpH0aYP2gLBuTf9xbZ9ojp9ybXHqdX73kv9kbaR4gdDwLXPyfcH8lPVzNaR0fuZCYYLoPbTzigAuaaN5RadrZnHmdIfog8IzbpMARqkDN0izSYO3UcU1O2I7S6Q9Mke8RYW1kP5o/kisspng-opencv-image-processing-computer-software-clip-art-5bfacd6ac22fb9.7878092015431632427954.png)
+![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/flasj.jpg = 250x250)
+![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/python.jpg = 250x250)
+![Image](https://github.com/dkarakay/Kodetak/blob/master/logos/android-studio-integrated-development-environment-software-build-intellij-idea-studio.jpg = 250x250)
+![Image](https://png2.cleanpng.com/sh/c711520b30039fbd3e3b3f1e8a896a5c/L0KzQYm4UcI2N5D6gpH0aYP2gLBuTf9xbZ9ojp9ybXHqdX73kv9kbaR4gdDwLXPyfcH8lPVzNaR0fuZCYYLoPbTzigAuaaN5RadrZnHmdIfog8IzbpMARqkDN0izSYO3UcU1O2I7S6Q9Mke8RYW1kP5o/kisspng-opencv-image-processing-computer-software-clip-art-5bfacd6ac22fb9.7878092015431632427954.png = 250x250)
  
  # Daha da İleri!
 \
