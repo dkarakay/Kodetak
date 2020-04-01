@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         final int durationMs = 1000;
 
 
-        //Dialog
+        /**
+         * Dil Seçim Ekranı için Dialog ekranı
+         */
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Dil seçin");
         int checkedItem = 0;
@@ -79,29 +81,42 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
 
-        //Change Mode Button
+
+        Button addressButton = (Button) findViewById(R.id.button_address);
+        addressButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        /**
+         * Mod Değiştirme Butonu
+         */
         final Button langButton = (Button) findViewById(R.id.btn_lang);
         langButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(speakIsOn){
                     speakIsOn = false;
-                    langButton.setText("Beep mode"); //Beep mode is on
+                    langButton.setText("Ses Modu");
                 }
                 else{
                     speakIsOn = true;
-                    langButton.setText("Object mode"); //Object mode is on
+                    langButton.setText("Nesne Modu");
                 }
 
             }
         });
 
-
+        /**
+         * Ses yükleme
+         */
         mp = MediaPlayer.create(getApplicationContext(), R.raw.cen);
         mp.setLooping(false);
 
         //TextToSpeech
-        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+      /*  t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
@@ -109,12 +124,14 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-        });
+        });*/
 
 
-        //Start Button
+        /**
+         * Başla Butonu
+         */
         getBtn = (Button) findViewById(R.id.getBtn);
-        getBtn.setText("Start");
+        getBtn.setText("Başla");
         getBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,8 +141,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
-        private class WebTest extends AsyncTask<Void,Void,Void>{
+    /**
+     * Arka Plandan Veri Çekme İşlemi için düzenlediğim AsyncTask sınıfı
+      */
+    private class WebTest extends AsyncTask<Void,Void,Void>{
             @Override
             protected  void onPreExecute(){
 
@@ -133,10 +152,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected Void doInBackground(Void... params) { //Accessing WebSite and fetch data
                 try {
-                    StringBuilder builder = new StringBuilder();
-                    Document doc = Jsoup.connect("http://192.168.43.147:5050/").get(); //Local URL
-                    builder.append(doc.body().text());
-                    line = builder.toString();
+                  //  StringBuilder builder = new StringBuilder();
+                 //   Document doc = Jsoup.connect("http://192.168.43.147:5050/").get(); //Local URL
+                  //  builder.append(doc.body().text());
+                  //  line = builder.toString();
+                    line="person -0.8 2";
                     if(line.startsWith("#")){ //If no object found
                         line = "?";
                     }else {
@@ -145,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("LOC: ", lines[1]);
                         Log.i("MUL: ", lines[2]);
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 return null;
@@ -153,42 +173,80 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Void avoid)// After fetching data
             {
-                //Update Result TextView with the published HTML data
-                result.setText("Object: " + lines[0] + "Location: " + lines[1]  + " Multiplier:" + lines[2]);
+                /**
+                 * Bilgisayardan gelen sonucu ekrana yazdır
+                 */
+
+
 
                 label = lines[0];
                 leftorright = Float.parseFloat(lines[1]);
                 multiplier = Float.parseFloat(lines[2]);
 
-                //Left 1 Right 0
-                //If object mode is on
+                String lr = "Sol";
+
+                if(leftorright > 0f){
+                    lr = "Sol";
+                }else  if (leftorright < 0f){
+                    lr = "Sağ";
+                }else{
+                    lr = "Ortada";
+                }
+
+                String str_obj = "Nesne: " + lines[0];
+                String str_loc = "\nKonum: " + lr;
+                String str_multiplier = "\nUzaklık Çarpanı: " + multiplier;
+
+                result.setText(str_obj+str_loc+str_multiplier);
+
+
+                /**
+                 * Sol 1 Sağ 0
+                 * Eğer nesne modundaysak
+                 */
                 if (speakIsOn) {
                     //TTS integration
                     //   t1.speak(label, TextToSpeech.QUEUE_FLUSH, null);
-                    if(leftorright == 1 ||leftorright == -1){ //Comes from center
+                    /**
+                     * Nesne merkezdeyse
+                     */
+                    if(leftorright == 1 ||leftorright == -1){
                         mp2.setVolume(1f*leftorright, 1f*leftorright);
                         mp3.setVolume(1f*leftorright, 1f*leftorright);
                         mp4.setVolume(1f*leftorright, 1f*leftorright);
                         mp5.setVolume(1f*leftorright, 1f*leftorright);
-                    }else if(leftorright >= 0){ //Comes from left
+                    }
+                    /**
+                     * Nesne soldaysa
+                     */
+                    else if(leftorright >= 0){
                         mp2.setVolume(1f*leftorright, 0f);
                         mp3.setVolume(1f*leftorright, 0f);
                         mp4.setVolume(1f*leftorright, 0f);
                         mp5.setVolume(1f*leftorright, 0f);
-                    }else if(leftorright <= 0){ //Comes from right
+                    }
+                    /**
+                     * Nesne sağdaysa
+                     */
+                    else if(leftorright <= 0){
                         mp2.setVolume(0, Math.abs(leftorright*1f));
                         mp3.setVolume(0, Math.abs(leftorright*1f));
                         mp4.setVolume(0, Math.abs(leftorright*1f));
                         mp5.setVolume(0, Math.abs(leftorright*1f));
                     }
-                    switch (label){ //Prepared multilanguage voice support (4 examples)
+                    /**
+                     * Birden Fazla Dil Desteği için düzenleme
+                     */
+                    switch (label){
                         case "person": mp2.start(); break;
                         case "chair": mp3.start(); break;
                         case "laptop": mp4.start(); break;
                         case "table": mp5.start(); break;
 
                     }
-                    //If beep mode is on
+                    /**
+                     * Eğer sadece ses modu açıksa
+                     */
                 }else{
                     if(leftorright == 1 ||leftorright == -1){
                         mp.setVolume(1f*leftorright, 1f*leftorright);
@@ -200,7 +258,10 @@ public class MainActivity extends AppCompatActivity {
                     mp.start();
                 }
 
-                new WebTest().execute(); //Recall the WebTest and update the values
+                /**
+                 * Verileri yeniden çek ve sistemi yeniden çalıştır.
+                 */
+                new WebTest().execute();
             }
         }
     }

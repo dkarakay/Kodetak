@@ -5,6 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context="com.dkarakay.jkj.MainActivity">
 
 
@@ -14,35 +15,75 @@
 
         <Button
             android:id="@+id/btn_lang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
-            android:text="Object Mode"
+            android:layout_width="165dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@android:color/holo_purple"
+            android:text="Nesne Modu"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/button_address" />
 
         <Button
             android:id="@+id/getBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
-            android:text="Start"
+            android:layout_width="161dp"
+            android:layout_height="127dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Başla"
+            android:textColor="@android:color/background_light"
+            android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_lang" />
 
         <TextView
-            android:id="@+id/hello"
+            android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="Bilgisayarda İşlenen Veriler"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/getBtn" />
+
+        <TextView
+            android:id="@+id/hello"
+            android:layout_width="411dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="28dp"
+            android:background="?android:attr/colorActivatedHighlight"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Nesne: Sandalye \n Konum: 1 \n Uzaklık Çarpanı: 0.95"
+            android:textColor="@android:color/background_dark"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/button_address"
+            android:layout_width="120dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="88dp"
+            android:backgroundTint="#8BC34A"
+            android:text="Adres"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
